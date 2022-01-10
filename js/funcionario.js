@@ -34,6 +34,7 @@ const postFuncionario = async(funcionario) =>{
             "content-Type": "application/json"
         },
     };
+    console.log(funcionario, options);
     await fetch(url,options);
 };
 const putFuncionario = async(funcionario,id) =>{
@@ -44,7 +45,6 @@ const putFuncionario = async(funcionario,id) =>{
             "content-Type": "application/json"
         },
     };
-    console.log(funcionario);
     await fetch(`${url}${id}`,options);
 };
 

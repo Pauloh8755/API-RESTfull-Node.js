@@ -35,7 +35,7 @@ const Funcionario = db.define("tbl_funcionario", {
         allowNull: true
     },
     foto: {
-        type: Sequelize.STRING,
+        type: Sequelize.BLOB,
         allowNull: true
     },
     sexo: {

@@ -3,6 +3,7 @@
 import {openModal,closeModal} from './modal.js';
 import { preencherEndereco } from './viaCep.js';
 import { getFuncionarios,deleteFuncionario,postFuncionario,putFuncionario } from './funcionario.js';
+import { imagePreview } from './uploadImage.js';
 
 const handleClickTr = async({target}) =>{  
     if(target.type === "button"){
@@ -16,14 +17,24 @@ const handleClickTr = async({target}) =>{
         }
     }
 };
+function _arrayBufferToBase64( buffer ) {
+    var binary = '';
+    var bytes = new Uint8Array( buffer );
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+        binary += String.fromCharCode( bytes[ i ] );
+    }
+    const btoa = window.btoa( binary );
+    return window.atob(btoa);
+}
+const criarLinha = ({nome,email,celular,foto,id_funcionario}) =>{
+   const img = _arrayBufferToBase64(foto.data);
 
 
-
-const criarLinha = ({nome,email,celular,id_funcionario}) =>{
     const linha = document.createElement("tr");
     linha.classList.add("registro-func", "text");
     linha.innerHTML = `
-        <td class="foto"><img src="./img/func2.svg"></td>
+        <td class="foto"><img src="${img}"></td>
         <td class="nome">${nome}</td>
         <td class="email">${email}</td>
         <td class="celular">${celular}</td>
@@ -51,6 +62,7 @@ const dataFormatBD = (date) =>{
 const salvarFuncionario = async({target}) =>{
     const data = dataFormatBD(document.getElementById("data").value);
 
+
     const funcionario = {
         "nome": document.getElementById("nome").value,
         "data_nasc": data,
@@ -58,7 +70,7 @@ const salvarFuncionario = async({target}) =>{
         "cpf": document.getElementById("cpf").value,
         "email": document.getElementById("email").value,
         "celular": document.getElementById("celular").value,
-        "foto": "dasd/adsa/da",
+        "foto": document.getElementById("imagePreview").src,
         "sexo": document.querySelector("input[name=rdoSexo]:checked").value,
         "endereco" : {
             "cep": document.getElementById("cep").value,
@@ -79,10 +91,17 @@ const salvarFuncionario = async({target}) =>{
     closeModal();
     carregarFuncionarios();
 };
+const handlePreview = () => imagePreview("imagePreview");
+
 carregarFuncionarios();
 
 document.getElementById("save").addEventListener("click",  salvarFuncionario);
 document.querySelector(".novo-func").addEventListener("click", openModal);
 document.querySelector("tbody").addEventListener("click", handleClickTr);
+document.getElementById("inputFile").addEventListener("change", handlePreview);
 document.getElementById("close-modal").addEventListener("click", closeModal);
 document.getElementById("cep").addEventListener("focusout", preencherEndereco);
+
+export{
+    _arrayBufferToBase64
+};

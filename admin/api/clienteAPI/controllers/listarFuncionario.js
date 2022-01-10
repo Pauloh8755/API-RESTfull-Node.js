@@ -14,7 +14,9 @@ const searchAllEmployee = async () =>{
         },
         attributes:{
             exclude: ["id_endereco"]
-        }
+        },
+        order: [["id_funcionario", "DESC"]]
+        
     });
     return funcionarios;
 };

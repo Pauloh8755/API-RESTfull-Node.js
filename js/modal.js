@@ -1,8 +1,10 @@
 "use strict";
 import {getFuncionario} from "./funcionario.js";
+import { _arrayBufferToBase64 } from "./main.js";
 
 const inputNome = document.getElementById("nome");
 const inputData = document.getElementById("data");
+const inputFoto = document.getElementById("imagePreview");
 const inputRg = document.getElementById("rg");
 const inputCpf = document.getElementById("cpf");
 const inputEmail = document.getElementById("email");
@@ -13,6 +15,7 @@ const inputNumero = document.getElementById("numero");
 const inputBairro = document.getElementById("bairro");
 const inputCidade = document.getElementById("cidade");
 const inputUf = document.getElementById("uf");
+const inputImage = document.getElementById("imagePreview");
 
 const loadCheck = (sexo) =>{
     const sexoinput = document.querySelectorAll("input[name='rdoSexo']");
@@ -41,6 +44,7 @@ const limparCampos = () =>{
     inputBairro.value = "";
     inputCidade.value = "";
     inputUf.value = "";
+    inputImage.src = "../img/plus.svg";
 };
 const dataFormat = (date) =>{
     const array = date.split("-");
@@ -48,10 +52,13 @@ const dataFormat = (date) =>{
     return newDate;
 };
 const loadFuncionario = async(id) =>{
-    const {nome,data_nasc,sexo,rg,cpf,email,celular,endereco} = await getFuncionario(id);
+    const {nome,foto,data_nasc,sexo,rg,cpf,email,celular,endereco} = await getFuncionario(id);
+    const image = _arrayBufferToBase64(foto.data);
     const data = dataFormat(data_nasc);
+
     loadCheck(sexo);
     inputNome.value = nome;
+    inputImage.src = image;
     inputData.value = data;
     inputRg.value = rg;
     inputCpf.value = cpf;

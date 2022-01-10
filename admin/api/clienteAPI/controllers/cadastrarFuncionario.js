@@ -17,6 +17,7 @@ const createAddress = async({endereco}) =>{
 } 
 
 const createEmployee = async(json, {id_endereco}) =>{
+    
     const novoFuncionario = await Funcionario.create({
         nome: json.nome,
         data_nasc: json.data_nasc,

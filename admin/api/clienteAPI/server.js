@@ -6,6 +6,7 @@ const create = require("./controllers/cadastrarFuncionario");
 const update = require("./controllers/atualizarFuncionario");
 const deletar = require("./controllers/deletarFuncionario");
 
+
 app.use(cors());
 app.use((req,res,next)=>{
    res.header("Acces-Control-Allow-Origin", "*");
@@ -14,7 +15,8 @@ app.use((req,res,next)=>{
    next();
 });
 
-app.use(express.json());
+
+app.use(express.json({limit: "5mb"}));
 
 app.get("/funcionario", async(req, res) =>{
     const func = await finder.searchAllEmployee() 
