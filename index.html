@@ -33,7 +33,7 @@
         </div>
 
     </header>
-    <main class="column-center">
+    <main class="column">
         <div class="container-modal column-center">
             <div id="modal-funcionario">
                 <div id="container-form">
@@ -43,7 +43,7 @@
                         <div class="head-form">
                             <div class="container-nome">
                                 <label><h3>Nome<h3></label>
-                                <input class="campo" type="text">
+                                <input class="campo" type="text" id="nome">
                             </div>
                             <div class="container-img">
                                 <div>   
@@ -52,60 +52,60 @@
                             </div>
                             <div class="container-data">
                                 <label><h3>Data Nascimento<h3></label>
-                                <input class="campo" type="text">
+                                <input class="campo" type="text" id="data">
                             </div>
                             <div class="container-sexo">
                                 <label><h3>Sexo<h3></label>
                                 <div>
-                                    <input type="radio" name="rdoSexo"><label class="radio"> Masculino</label>
-                                    <input type="radio" name="rdoSexo"><label class="radio"> Feminino</label>
-                                    <input type="radio" name="rdoSexo"><label class="radio"> Outro</label>
+                                    <input type="radio" name="rdoSexo" value="M"><label class="radio"> Masculino</label>
+                                    <input type="radio" name="rdoSexo" value="F"><label class="radio"> Feminino</label>
+                                    <input type="radio" name="rdoSexo" value="O"><label class="radio"> Outro</label>
                                 </div>
                             </div>
                         </div>
                         <div class="body-form">
                             <div class="container-rg">
                                 <label><h3>RG<h3></label>
-                                <input class="campo" type="text">
+                                <input class="campo" type="text" id="rg">
                             </div>
                             <div class="container-cpf">
                                 <label><h3>CPF<h3></label>
-                                <input class="campo" type="text">
+                                <input class="campo" type="text" id="cpf">
                             </div>
                             <div class="container-email">
                                 <label><h3>Email<h3></label>
-                                <input class="campo" type="text">
+                                <input class="campo" type="text" id="email">
                             </div>
                             <div class="container-celular">
                                 <label><h3>Celular<h3></label>
-                                <input class="campo" type="text">
+                                <input class="campo" type="text" id="celular">
                             </div>
                             <div class="container-cep">
                                 <label><h3>CEP<h3></label>
-                                <input class="campo" type="text">
+                                <input class="campo" type="text" id="cep">
                             </div>
                             <div class="container-rua">
                                 <label><h3>Logradouro<h3></label>
-                                <input class="campo" type="text">
+                                <input class="campo" type="text" id="logradouro">
                             </div>
                             <div class="container-numero">
                                 <label><h3>Número<h3></label>
-                                <input class="campo" type="text">
+                                <input class="campo" type="text" id="numero">
                             </div>
                             <div class="container-bairro">
                                 <label><h3>Bairro<h3></label>
-                                <input class="campo" type="text">
+                                <input class="campo" type="text" id="bairro">
                             </div>
                             <div class="container-cidade">
                                 <label><h3>Cidade<h3></label>
-                                <input class="campo" type="text">
+                                <input class="campo" type="text" id="cidade">
                             </div>
                             <div class="container-uf">
                                 <label><h3>UF<h3></label>
-                                <input class="campo" type="text">
+                                <input class="campo" type="text" id="uf">
                             </div>
                             <div class="container-cadastrar">
-                                <input type="submit" class="button-cadastrar green" value="Cadastrar">
+                                <input type="button" class="button-cadastrar green" value="Cadastrar" id="save" >
                             </div>
                         </div>
                     </form>
@@ -114,42 +114,23 @@
         </div>
         <img id="back-svg" src="./img/background.svg">
         <img id="node-svg" src="./img/node.svg">
-        <table class="records">
+        <table class="titulo-tabela">
             <thead class="title">
-                <td class="foto">Foto</td>
-                <td class="nome">Nome</td>
-                <td class="email">Email</td>
-                <td class="celular">Celular</td>
-                <td class="func"><div class="novo-func"><img src="./img/bx-plus 1.svg"> Novo Funcionário</div></td>
+                <tr>
+                    <td class="foto">Foto</td>
+                    <td class="nome">Nome</td>
+                    <td class="email">Email</td>
+                    <td class="celular">Celular</td>
+                    <td class="func"><div class="novo-func"><img src="./img/bx-plus 1.svg"> Novo Funcionário</div></td>
+                </tr>
             </thead>
-            <tr class="registro-func text">
-                <td class="foto"><img src="./img/func.svg"></td>
-                <td class="nome">Paulo Henrique de Andrade Junior</td>
-                <td class="email">Pauloh8755@gmail.com</td>
-                <td class="celular">(11) 98763-5657</td>
-                <td class="func"><button class="button green editar" type="button">Editar</button><button class="button red">Deletar</button></td>
-            </tr>
-            <tr class="registro-func text">
-                <td class="foto"><img src="./img/func2.svg"></td>
-                <td class="nome">Maria Moreira da Silva</td>
-                <td class="email">Pauloh8755@gmail.com</td>
-                <td class="celular">(11) 98763-5657</td>
-                <td class="func"><button class="button green editar" type="button">Editar</button><button class="button red">Deletar</button></td>
-            </tr>
-            <tr class="registro-func text">
-                <td class="foto"><img src="./img/func3.svg"></td>
-                <td class="nome">Maria Moreira da Silva</td>
-                <td class="email">Pauloh8755@gmail.com</td>
-                <td class="celular">(11) 98763-5657</td>
-                <td class="func"><button class="button green">Editar</button><button class="button red">Deletar</button></td>
-            </tr>
-            <tr class="registro-func text">
-                <td class="foto"><img src="./img/func4.svg"></td>
-                <td class="nome">Maria Moreira da Silva</td>
-                <td class="email">Pauloh8755@gmail.com</td>
-                <td class="celular">(11) 98763-5657</td>
-                <td class="func"><button class="button green">Editar</button><button class="button red">Deletar</button></td>
-            </tr>
+        </table>
+        <table class="records">
+            <div class="overflow">
+                <tbody>
+                
+                </tbody>
+            </div>
         </table>
     </main>
 </body>

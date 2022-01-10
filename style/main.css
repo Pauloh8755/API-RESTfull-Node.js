@@ -18,6 +18,11 @@
     align-items: center;
     flex-direction: column;
 }
+.column{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 .title{
     font-size: 1.6rem;
     color: white;
@@ -102,39 +107,52 @@ main{
 }
 .records{
     width: 1300px;
+    max-height: 570px;
+    display: block;
+    overflow-x: hidden;
     border-spacing: 0;
     box-shadow: 2px 4px 10px #0003;
 }
-.records thead{
+.titulo-tabela{
+    width: 1300px;
+    border-spacing: 0;
+    box-shadow: 2px 4px 10px #0003;
+    margin-top: 15vh;
+}
+table thead{
+    width: 1300px;
     height: 85px;
     background-color: var(--purple-main);
 }
-.records td{
+table td{
    padding-left: 20px;
 }
-.records .registro-func td img{
+table .registro-func td img{
     width: 70px;
 }
-.records .foto{
+table .foto{
     width: 90px;   
 }
-.records .nome{
+table .nome{
     width: 340px;
 }
-.records .email{
-    width: 270px;
+table .email{
+    width: 320px;
 }
-.records .celular{
+table .celular{
     width: 200px;
 }
-.records .func{
-    width: 150px;
+table .func{
+    width: 330px;
 }
-.records .registro-func td{
+table .registro-func td{
     border-bottom: 1px solid rgba(167, 167, 167, 0.692);
 }
+.overflow{
+    overflow: auto;
+}
 .novo-func{
-    width: 300px;
+    width: 290px;
     height: 60px;
     
     display: flex;
@@ -147,12 +165,12 @@ main{
     cursor: pointer;
     transition: all .6s;
 }
-.records .registro-func{
+table .registro-func{
     height: 95px;
     background-color: rgba(255, 255, 255, 0.534);
     border-bottom: 1px solid black;
 }
-.records .registro-func .func{
+table .registro-func .func{
     padding-left:  50px;
 }
 .container-modal{
@@ -161,7 +179,7 @@ main{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #cbcbcb81;
+    background-color: #9999999f;
     display: none;
 }
 .active{

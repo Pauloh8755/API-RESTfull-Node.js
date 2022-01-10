@@ -6,15 +6,15 @@ const create = require("./controllers/cadastrarFuncionario");
 const update = require("./controllers/atualizarFuncionario");
 const deletar = require("./controllers/deletarFuncionario");
 
-app.use(express.json());
-
+app.use(cors());
 app.use((req,res,next)=>{
    res.header("Acces-Control-Allow-Origin", "*");
    res.header("Acces-Control-Allow-Methods", "GET,PUT,POST,DELETE");
    res.header("Access-Control-Allow-Headers", "Content-Type");
-   app.use(cors());
    next();
 });
+
+app.use(express.json());
 
 app.get("/funcionario", async(req, res) =>{
     const func = await finder.searchAllEmployee() 
@@ -51,7 +51,7 @@ app.delete("/funcionario/:id", async(req,res)=>{
     res.status(200).send("Dados deletados com sucesso");
 });
 
-app.listen(8080, () =>{
+app.listen(3000, () =>{
     console.log("server is running");
 });
 

@@ -44,9 +44,10 @@ const updateAddress = async({endereco},id) =>{
 
 const update = async (json,id) =>{
     const resEmployee = await updateEmployee(json,id);
-    const {id_endereco} = await finder.serchOneEmployee(id);
+    const {endereco} = await finder.serchOneEmployee(id);
     if(resEmployee){
-        const resAddress = updateAddress(json,id_endereco);
+        const resAddress = await updateAddress(json,endereco.id_endereco);
+        
         return resAddress;
     }
     else{

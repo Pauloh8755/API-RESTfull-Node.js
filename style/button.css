@@ -9,6 +9,7 @@
     font-family: 'Poppins', sans-serif;
     font-size: 1.3rem;
     margin-right: 15px;
+    border-radius: 4px;
 }
 .button-cadastrar{
     margin-right: 0;
@@ -22,16 +23,16 @@
     cursor: pointer;
 }
 .red{
-    background-color: #f74848;
+    background-color: #fd5757;
 }
 .red:hover{
     background-color: #cc3c3c;
     transition:  all .6s;
 }
 .green{
-    background-color: #82e95c;
+    background-color: #72e781;
 }
 .green:hover{
-    background-color: #5db83c;
+    background-color: #56ad62;
     transition:  all .6s;
 }

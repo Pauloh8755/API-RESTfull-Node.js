@@ -24,9 +24,6 @@ const serchOneEmployee = async (id) => {
             model: Endereco,
             as: "endereco",
             required: true,
-            attributes: {
-                exclude: ["id_endereco"]
-            }
         },
         attributes:{
             exclude: ["id_endereco"]
