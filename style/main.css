@@ -35,6 +35,11 @@
     font-size: 1.3rem;
     color: var(--font-main);
 }
+.small-text{
+    font-size: 1.1rem;
+    color: var(--font-main);
+    font-weight: 500;
+}
 body{
     width: 100vw;
     height: 100vh;
@@ -124,6 +129,7 @@ table thead{
     height: 85px;
     background-color: var(--purple-main);
 }
+
 table td{
    padding-left: 20px;
 }
@@ -146,9 +152,27 @@ table .celular{
 }
 table .func{
     width: 330px;
+    position: relative;
 }
 table .registro-func td{
     border-bottom: 1px solid rgba(167, 167, 167, 0.692);
+}
+
+.container-confirm{
+    width: 300px;
+    height: 75px;
+    background-color: white;
+    position: absolute;
+    margin-top: -55px;
+    margin-left: -35px;
+    z-index: 100;
+    border-top: 4px solid var(--purple-main);
+    display: none;
+}
+.container-confirm div{
+    display: flex;
+    padding-top: 10px;
+    gap: 5px;
 }
 .overflow{
     overflow: auto;
@@ -331,3 +355,14 @@ h3{
 input[type='file']{
     display: none;
 }
+.check-modal{
+    display: none;
+}
+
+.check-modal:checked + div{
+    display: flex;
+}
+
+
+
+

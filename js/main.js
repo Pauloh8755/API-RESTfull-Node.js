@@ -1,19 +1,24 @@
 "use strict";
 
-import {openModal,closeModal} from './modal.js';
+import {openModal,closeModal,openConfirm,closeConfirm} from './modal.js';
 import { preencherEndereco } from './viaCep.js';
 import { getFuncionarios,deleteFuncionario,postFuncionario,putFuncionario } from './funcionario.js';
 import { imagePreview } from './uploadImage.js';
 
+const handleClickConfirm = async({target}) => {
+    if(target.type === "button"){
+        const action = target.textContent.trim();
+        if(action === "Sim"){
+            await deleteFuncionario(target.dataset.idfuncionario);
+            carregarFuncionarios();
+        }
+    }
+};
 const handleClickTr = async({target}) =>{  
     if(target.type === "button"){
         const action = target.textContent.trim();
         if(action === "Editar"){
             openModal("Atualizar",target.dataset.idfuncionario);
-        }
-        else{
-            await deleteFuncionario(target.dataset.idfuncionario);
-            carregarFuncionarios();
         }
     }
 };
@@ -40,7 +45,16 @@ const criarLinha = ({nome,email,celular,foto,id_funcionario}) =>{
         <td class="celular">${celular}</td>
         <td class="func">
             <button class="button green editar" type="button" data-idfuncionario=${id_funcionario}>Editar</button>
-            <button class="button red" type="button" data-idfuncionario=${id_funcionario}>Deletar</button>
+            
+            <label for="funcionario${id_funcionario}" id="btn-deletar"class="button red" type="button">Deletar</label>
+            <input type="checkbox" class="check-modal" name="funcionario${id_funcionario}"id="funcionario${id_funcionario}">
+            <div class="container-confirm">
+                <p class="small-text">Tem certeza que deseja Deletar?</p>
+                <div>
+                    <label for="funcionario${id_funcionario}" id="cancel-delete" type="button" class="btn-confirm green">Não</label>
+                    <button id="confirm-delete" type="button" class="btn-confirm red"  data-idfuncionario=${id_funcionario}>Sim</button>
+                </div>
+            </div>
         </td>
     `;
     return linha;
@@ -98,9 +112,12 @@ carregarFuncionarios();
 document.getElementById("save").addEventListener("click",  salvarFuncionario);
 document.querySelector(".novo-func").addEventListener("click", openModal);
 document.querySelector("tbody").addEventListener("click", handleClickTr);
+document.querySelector("tbody").addEventListener("click", handleClickConfirm);
 document.getElementById("inputFile").addEventListener("change", handlePreview);
 document.getElementById("close-modal").addEventListener("click", closeModal);
 document.getElementById("cep").addEventListener("focusout", preencherEndereco);
+// document.getElementById("btn-deletar").addEventListener("click", openConfirm);
+// document.getElementById("cancel-delete").addEventListener("click", closeConfirm);
 
 export{
     _arrayBufferToBase64

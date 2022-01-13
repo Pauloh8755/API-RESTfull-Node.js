@@ -90,7 +90,17 @@ const closeModal = () =>{
     document.querySelector(".container-modal").classList.remove("active");
 };
 
+const openConfirm = () =>{
+    document.querySelector(".container-confirm").classList.add("active");
+};
+
+const closeConfirm = () =>{
+    document.querySelector(".container-confirm").classList.remove("active");
+};
+
 export{
     openModal,
-    closeModal
+    closeModal,
+    openConfirm,
+    closeConfirm
 };
